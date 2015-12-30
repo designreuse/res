@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html ng-app="peccancyModule">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<title>index</title>
+<link href="../resources/inspinia/bootstrap.min.css" rel="stylesheet">
+<link href="../resources/font-awesome/css/font-awesome.css" rel="stylesheet">
+<!-- datepicker -->
+<link href="../vendor/angular-strap/libs.min.css" rel="stylesheet">
+<!-- chosen -->
+<link href="../resources/inspinia/plugins/chosen/chosen.css" rel="stylesheet">
+<link href="../resources/inspinia/animate.css" rel="stylesheet">
+<link href="../resources/inspinia/style.css" rel="stylesheet">
+
+<!-- css -->
+<link href="../resources/css/css.css" rel="stylesheet">
+</head>
+
+<body class="fixed-navigation  fixed-nav pace-done" ng-controller="PeccancyController" style="background-color:#fff;overflow-y:auto;">
+<!-- echart -->
+<script type="text/javascript" src="../vendor/echart/echarts-all.js"></script>
+<div style="padding:20px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+				<span class="title-green">今天</span>违章数<span class="title-blue">{{todayNum}}</span>条，违章人数<span class="title-green1">{{violatePersonNumToday}}</span>人，照片总数 <span class="title-green1">{{violatePhotoNumToday}}</span>张,累计违章数 {{allViolateNum}}  违章人数 {{allViolatePersonNumToday}}  照片总数 {{allViolatePhotoNumToday}}
+				</div>
+				<div class="ibox-content">
+	            <ul class="nav nav-tabs">
+	            <li  class="active">
+					<a data-target="#range"  class="ui-tabs-a menu-a-tab" data-toggle="tab" > 
+					<span class="sidebar-nav-item ng-binding"><strong>按天</strong></span>
+					</a>
+					</li>
+	            	<li>
+					<a data-target="#date"  class="ui-tabs-a menu-a-tab" data-toggle="tab" ng-click="dateTabSelect()"> 
+					<span class="sidebar-nav-item ng-binding"><strong>按时间段</strong></span>
+					</a>
+					</li>
+				</ul>
+				<div class="tab-content" style="background-color:#F5F5F5;">
+					<div class="tab-pane in active" style="padding:20px;" id="range">
+					<div class="form-inline margin-bott">
+								<div class="form-group col-xs-4">
+						<div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+						<div class="input-group ">
+					    <input type="text" class="form-control" ng-model="selectedDate" name="date" ng-change="queryDate()" date-type="string"   autoclose="true" bs-datepicker>
+					    <div class="input-group-addon">
+						                        <i class="fa fa-calendar"></i>
+						 </div>
+						 </div>
+						 </div>
+						 </div>
+					  </div>
+				    <div id="dateLine" style="width: 100%;"></div>
+					</div>
+					<div class="tab-pane" style="padding:20px;" id="date">
+					<div class="form-inline margin-bott">
+								<div class="form-group col-xs-6">
+									<div class="input-group ">
+										<input type="text" class="form-control" ng-model="fromDate"
+											data-max-date="{{untilDate}}" placeholder="开始" ng-change="queryDateRange()" date-type="string"
+											  autoclose="true" bs-datepicker>
+											<div class="input-group-addon">
+						                        <i class="fa fa-calendar"></i>
+						                      </div>
+									</div>
+									至
+									<div class="input-group ">
+										<input type="text" class="form-control" ng-model="untilDate"
+											data-min-date="{{fromDate}}" placeholder="结束" ng-change="queryDateRange()" date-type="string"
+											  autoclose="true" bs-datepicker>
+											<div class="input-group-addon">
+						                        <i class="fa fa-calendar"></i>
+						                      </div>
+									</div>
+								</div>
+								</div>
+					<div id="rangeLine" style="width: 100%;"></div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>违章量</h5>
+				</div>
+				<div class="ibox-content">
+				<div id="peccancyBar" style="width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>违章拍摄量</h5>
+				</div>
+				<div class="ibox-content">
+				<div id="photoBar" style="width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>各单位违章比例</h5>
+				</div>
+				<div class="ibox-content">
+				<div id="orgPie" style="width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>各工种违章比例</h5>
+				</div>
+				<div class="ibox-content">
+				<div id="workPie" style="width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</div>
+<!-- angularjs --> 
+<script type="text/javascript" src="../vendor/angularjs/angular.js"></script>
+<script type="text/javascript" src="../vendor/angularjs/angular-route.js"></script>
+<script type="text/javascript" src="../vendor/angularjs/angular-resource.js"></script>
+<script type="text/javascript" src="../vendor/angular-strap/angular-strap.js"></script>
+<script type="text/javascript" src="../vendor/angular-strap/angular-strap.tpl.min.js"></script>
+
+<!-- Mainly scripts --> 
+<script src="../resources/inspinia/jquery-2.1.1.js"></script> 
+<script src="../resources/inspinia/bootstrap.min.js"></script> 
+
+<script type="text/javascript" src="../app.js"></script>
+<script type="text/javascript" src="peccancy.js"></script>
+</body>
+</html>

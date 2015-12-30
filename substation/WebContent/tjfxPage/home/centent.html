@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html ng-app="homeModule">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<title>index</title>
+<link href="../resources/inspinia/bootstrap.min.css" rel="stylesheet">
+<link href="../resources/font-awesome/css/font-awesome.css" rel="stylesheet">
+<!-- datepicker -->
+<link href="../vendor/angular-strap/libs.min.css" rel="stylesheet">
+<!-- chosen -->
+<link href="../resources/inspinia/plugins/chosen/chosen.css" rel="stylesheet">
+<link href="../resources/inspinia/animate.css" rel="stylesheet">
+<link href="../resources/inspinia/style.css" rel="stylesheet">
+
+<!-- css -->
+<link href="../resources/css/css.css" rel="stylesheet">
+</head>
+
+<body class="fixed-navigation  fixed-nav pace-done" ng-controller="HomeController" style="background-color:#fff;overflow-y:auto;">
+	            <ul class="nav nav-tabs" id="myTab">
+	            <li  class="active">
+					<a data-target="#today"  class="ui-tabs-a menu-a-tab" data-toggle="tab" > 
+					<span class="sidebar-nav-item ng-binding"><strong>今天</strong></span>
+					</a>
+					</li>
+	            	<li>
+					<a data-target="#week"  class="ui-tabs-a menu-a-tab" data-toggle="tab" > 
+					<span class="sidebar-nav-item ng-binding"><strong>本周</strong></span>
+					</a>
+					</li>
+	            	<li>
+					<a data-target="#month" class="ui-tabs-a menu-a-tab" data-toggle="tab"> 
+					<span class="sidebar-nav-item ng-binding"><strong>本月</strong></span>
+					</a>
+					</li>
+				</ul>
+				<div class="tab-content" style="background-color:#F5F5F5;">
+					<div class="tab-pane in active" style="padding:20px;" id="today">
+					<div class="row">
+					<div class="col-md-4">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">今天</span><span>进站人数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../personnel/centent.html"><span class="content-orange">{{inNumToday}}</span></a>&nbsp;&nbsp;人
+						</div>
+						<div class="ibox-footer">
+						工程总人数：{{allPersonNum+'人'}}
+						</div>
+					</div>
+					</div>
+					<div class="col-md-8">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">今天</span><span>已检测标签数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../tag/centent.html"><span class="content-blue1">{{tagNumYesToday}}</span></a>&nbsp;&nbsp;个
+						</div>
+						<div class="ibox-footer">
+						已绑定标签人数：{{tagPersonNumToday+'人'}}  未检测标签数：{{tagNoBindNumToday+'人'}}
+						</div>
+					</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-md-4">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">今天</span><span>移动应用活跃人数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../mobile/centent.html"><span class="content-green">{{moblieNumToday}}</span></a>&nbsp;&nbsp;人
+						</div>
+						<div class="ibox-footer">
+						累计活跃用户数：{{allMoblieNum+'人'}}
+						</div>
+					</div>
+					</div>
+					<div class="col-md-8">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">今天</span><span>违章数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violateNumToday}}</span></a>&nbsp;&nbsp;条
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violatePersonNumToday}}</span></a>&nbsp;&nbsp;人
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violatePhotoNumToday}}</span></a>&nbsp;&nbsp;张照片
+						</div>
+						<div class="ibox-footer">
+						累计违章数：{{allViolateNum+'人'}}  违章人数：{{allViolatePersonNumToday+'人'}} 照片总数：{{allViolatePhotoNumToday+'人'}}
+						</div>
+					</div>
+					</div>
+					</div>
+				
+					</div>
+					<div class="tab-pane" style="padding:20px;" id="week">
+					<div class="row">
+					<div class="col-md-4">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本周</span><span>进站人数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						 <a href="../personnel/centent.html"><span class="content-orange">{{inNumWeek}}</span></a>&nbsp;&nbsp;人
+						</div>
+						<div class="ibox-footer">
+						工程总人数：{{allPersonNum+'人'}}
+						</div>
+					</div>
+					</div>
+					<div class="col-md-8">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本周</span><span>已检测标签数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../tag/centent.html"><span class="content-blue1">{{tagNumYesWeek}}</span></a>&nbsp;&nbsp;个
+						</div>
+						<div class="ibox-footer">
+						已绑定标签人数：{{tagPersonNumWeek+'人'}}  未检测标签数：{{tagNoBindNumWeek+'人'}}
+						</div>
+					</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-md-4">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本周</span><span>移动应用活跃人数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../mobile/centent.html"><span class="content-green">{{moblieNumWeek}}</span></a>&nbsp;&nbsp;人
+						</div>
+						<div class="ibox-footer">
+						累计活跃用户数：{{allMoblieNum+'人'}}
+						</div>
+					</div>
+					</div>
+					<div class="col-md-8">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本周</span><span>违章数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violateNumWeek}}</span></a>&nbsp;&nbsp;条
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violatePersonNumWeek}}</span></a>&nbsp;&nbsp;人
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violatePhotoNumWeek}}</span></a>&nbsp;&nbsp;张照片
+						</div>
+						<div class="ibox-footer">
+						累计违章数：{{allViolateNum+'人'}}  违章人数：{{allViolatePersonNumToday+'人'}} 照片总数：{{allViolatePhotoNumToday+'人'}}
+						</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					<div class="tab-pane" style="padding:20px;" id="month">
+					<div class="row">
+					<div class="col-md-4">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本月</span><span>进站人数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../personnel/centent.html"><span class="content-orange">{{inNumMonth}}</span></a>&nbsp;&nbsp;人
+						</div>
+						<div class="ibox-footer">
+						工程总人数：{{allPersonNum+'人'}}
+						</div>
+					</div>
+					</div>
+					<div class="col-md-8">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本月</span><span>已检测标签数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../tag/centent.html"><span class="content-blue1">{{tagNumYesMonth}}</span></a>&nbsp;&nbsp;个
+						</div>
+						<div class="ibox-footer">
+						已绑定标签人数：{{tagPersonNumMonth+'人'}}  未检测标签数：{{tagNoBindNumMonth+'人'}}
+						</div>
+					</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-md-4">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本月</span><span>移动应用活跃人数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../mobile/centent.html"><span class="content-green">{{moblieNumMonth}}</span></a>&nbsp;&nbsp;人
+						</div>
+						<div class="ibox-footer">
+						累计活跃用户数：{{allMoblieNum+'人'}}
+						</div>
+					</div>
+					</div>
+					<div class="col-md-8">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="title-green">本月</span><span>违章数</span>
+						</div>
+						<div class="ibox-content" style="text-align:center;">
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violateNumMonth}}</span></a>&nbsp;&nbsp;条
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violatePersonNumMonth}}</span></a>&nbsp;&nbsp;人
+						<a href="../peccancy/centent.html"><span class="content-blue2">{{violatePhotoNumMonth}}</span></a>&nbsp;&nbsp;张照片
+						</div>
+						<div class="ibox-footer">
+						累计违章数：{{allViolateNum+'人'}}  违章人数：{{allViolatePersonNumToday+'人'}} 照片总数：{{allViolatePhotoNumToday+'人'}}
+						</div>
+					</div>
+					</div>
+					</div>
+					</div>
+				</div>
+					
+<!-- angularjs --> 
+<script type="text/javascript" src="../vendor/angularjs/angular.js"></script>
+<script type="text/javascript" src="../vendor/angularjs/angular-route.js"></script>
+<script type="text/javascript" src="../vendor/angularjs/angular-resource.js"></script>
+<script type="text/javascript" src="../vendor/angular-strap/angular-strap.js"></script>
+<script type="text/javascript" src="../vendor/angular-strap/angular-strap.tpl.min.js"></script>
+
+<!-- Mainly scripts --> 
+<script src="../resources/inspinia/jquery-2.1.1.js"></script> 
+<script src="../resources/inspinia/bootstrap.min.js"></script> 
+
+<script type="text/javascript" src="../app.js"></script>
+<script type="text/javascript" src="home.js"></script>
+</body>
+</html>

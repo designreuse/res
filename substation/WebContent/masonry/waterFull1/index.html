@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery网站瀑布流插件masonry - a5源码</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/lightbox.js"></script>
+<script src="js/jquery.masonry.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){	
+	$(".zoom").hide();
+
+	$(".zoom").each(function(){//遍历所有对象
+	var src=$(this).siblings("img").attr("src");
+		$(this).attr({href:src});
+	});
+	
+	
+	$("#waterfall li").mouseover(function(){
+		$(this).addClass("hover");
+		$(this).find(".zoom").show();
+	});
+	
+	$("#waterfall li").mouseout(function(){
+		$(this).removeClass("hover");
+		$(this).find(".zoom").hide();
+	});
+});
+
+</script>
+</head>
+
+<body>
+<div id="main">
+	<ul id="waterfall">
+    	
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02a15cce0609367b63.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02ab3e8234460af10e.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+      </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02a81ce70524e175d7.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02bee23c21dddc6707.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02a415b0bdec9addfd.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02b2d677a770616c3e.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/75462f17-1d2c-4a35-aa84-301f10d39476.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/75462f17-1d2c-4a35-aa84-301f10d39476.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02fd158bc6a537cd42.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+        
+        <li>
+        	<div class="img_block">
+            	<img src="files/t02fd158bc6a537cd42.jpg" />
+                <a href="#" rel="lightbox[plants]"  class="zoom">放大</a>
+          </div>
+          <p>简介文字</p>
+		</li>
+		</ul>
+    <br />
+<div style="visibility:hidden" id=loading class=loading><p><img src="images/loading.gif"><IMG src="images/load.gif"></p></div>
+	<!-- loading按钮自己通过样式调整 -->
+	<div id="imloading" style="width:150px;height:30px;line-height:30px;font-size:16px;text-align:center;border-radius:3px;opacity:0.7;background:#000;margin:10px auto 30px;">
+	               <a href="javascript:void(0)"  onclick="onLoadMoreImg();" style="color:#fff;">加载更多图片.....</a>
+	</div>
+</div>
+<script>
+    var $waterfall = $('#waterfall'); 
+  $(function(){
+    $waterfall.masonry({
+       columnWidth: 230
+    });
+  });
+    function onLoadMoreImg(){
+        var html=' <li><div class="img_block"><img src="files/t02a15cce0609367b63.jpg" /><a href="#" rel="lightbox[plants]"  class="zoom">放大</a> </div> <p>简介文字</p></li>';
+        $waterfall.append($(html));
+        $waterfall.imagesLoaded(function(){ 
+	        $waterfall.masonry( 'appended', $(html))
+        	
+        });
+    }
+</script>
+</div>
+</body>
+</html>

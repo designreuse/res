@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html ng-app="statisApp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<title>index</title>
+<link href="resources/inspinia/bootstrap.min.css" rel="stylesheet">
+<link href="resources/font-awesome/css/font-awesome.css" rel="stylesheet">
+<!-- datepicker -->
+<link href="vendor/angular-strap/libs.min.css" rel="stylesheet">
+<!-- chosen -->
+<link href="resources/inspinia/plugins/chosen/chosen.css" rel="stylesheet">
+<link href="resources/inspinia/animate.css" rel="stylesheet">
+<link href="resources/inspinia/style.css" rel="stylesheet">
+
+<!-- css -->
+<link href="resources/css/css.css" rel="stylesheet">
+</head>
+
+<body class="fixed-navigation  fixed-nav pace-done">
+<!-- echart -->
+<script type="text/javascript" src="vendor/echart/echarts-all.js"></script>
+<div class="pace pace-inactive">
+	<div class="pace-progress" data-progress-text="100%" data-progress="99" style="-webkit-transform: translate3d(100%, 0px, 0px); transform: translate3d(100%, 0px, 0px);">
+		<div class="pace-progress-inner"></div>
+	</div>
+	<div class="pace-activity"></div>
+</div>
+<div id="wrapper">
+	<nav class="navbar-default navbar-static-side" role="navigation">
+		<div class="sidebar-collapse">
+			<ul class="nav metismenu" id="side-menu">
+				<li class="active"> <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">工程概况</span></a> </li>
+				<li> <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">组织机构</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li><a href="#">二级分类</a></li>
+						<li><a href="#">二级分类</a></li>
+						<li><a href="#">二级分类</a></li>
+					</ul>
+				</li>
+				<li> <a href="#"><i class="fa fa-pie-chart"></i> <span class="nav-label">平面布置图</span><span class="label label-warning pull-right">16/24</span></a></li>
+				<li> <a href="#"><i class="fa fa-table"></i> <span class="nav-label">违章</span></a> </li>
+				<li> <a id="statis" href="#" ng-href="#home"><i class="fa fa-shopping-cart"></i> <span class="nav-label">统计分析</span><span class="fa arrow"></span></a> 
+				<ul class="nav nav-second-level collapse">
+						<li><a href="#" ng-href="#personnel">人员统计</a></li>
+						<li><a href="#" ng-href="#tag">标签统计</a></li>
+						<li><a href="#" ng-href="#peccancy">违章统计</a></li>
+						<li><a href="#" ng-href="#mobile">移动应用统计</a></li>
+					</ul></li>
+				<li> <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">活动日志</span><span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level collapse">
+						<li> <a href="#">有三级菜单<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level collapse">
+								<li> <a href="#">3333333333</a> </li>
+								<li> <a href="#">333333333</a> </li>
+								<li> <a href="#">33333333</a> </li>
+							</ul>
+						</li>
+						<li><a href="#">二级菜单</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div id="page-wrapper" class="gray-bg">
+		<div class="row border-bottom">
+			<nav class="navbar white-bg navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+				<div class="navbar-header">
+					<div class="pull-left"><img alt="image" class="img-circle logo_img" src="resources/images/logo.png"><span class="logo_title">变电站工程现场人员动态管控一体化平台</span>
+						<div class="input-group select_item">
+							<select data-placeholder="Choose a Country..." class="chosen-select" style="width:300px;" tabindex="2">
+								<option value="">请选择工程</option>
+								<option value="a">工程工程名称名称</option>
+								<option value="aaa">工程工程名称名称</option>
+								<option value="bb">工程工程名称名称</option>
+								<option value="bbb Islands">工程工程名称名称</option>
+								<option value="ccc">工程工程名称名称</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<a class="navbar-minimalize minimalize-styl-2 btn btn-primary pull-right" href="#"><i class="fa fa-bars"></i></a>
+				<ul class="nav navbar-top-links navbar-right">
+					<li> <span class="m-r-sm text-muted welcome-message">用户名</span> </li>
+					<li class="dropdown"> <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#"> <i class="fa fa-envelope"></i> <span class="label label-warning">16</span> </a>
+						<ul class="dropdown-menu dropdown-messages">
+							<li>消息内容</li>
+						</ul>
+					</li>
+					<li class="dropdown"> <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#"> <i class="fa fa-bell"></i> <span class="label label-primary">8</span> </a>
+						<ul class="dropdown-menu dropdown-alerts">
+							<li> <a href="#">
+								<div> <i class="fa fa-envelope fa-fw"></i> 消息内容 <span class="pull-right text-muted small">4 分钟前</span> </div>
+								</a> </li>
+							<li class="divider"></li>
+							<li> <a href="#">
+								<div> <i class="fa fa-twitter fa-fw"></i> 消息内容消息内容 <span class="pull-right text-muted small">12 分钟前</span> </div>
+								</a> </li>
+							<li class="divider"></li>
+							<li> <a href="#">
+								<div> <i class="fa fa-upload fa-fw"></i> 消息内容消息内容 <span class="pull-right text-muted small">4 前</span> </div>
+								</a> </li>
+							<li class="divider"></li>
+							<li>
+								<div class="text-center link-block"> <a href="#"> <strong>所有信息</strong> <i class="fa fa-angle-right"></i> </a> </div>
+							</li>
+						</ul>
+					</li>
+					<li> <a href="login.html"> <i class="fa fa-sign-out"></i>退出</a> </li>
+				</ul>
+			</nav>
+		</div>
+		<div class="wrapper wrapper-content">
+		<!-- Content -->
+		<div class="page-content" ng-view name="tab-contents"></div>
+		
+		</div>
+		<div class="footer fixed">
+			<div class="pull-right"> <strong>版本号：</strong>V1.0 </div>
+			<div> <strong>版权所有</strong> 唐山新质点科技有限公司 © 2015-2016 </div>
+		</div>
+	</div>
+</div>
+<!-- angularjs --> 
+<script type="text/javascript" src="vendor/angularjs/angular.js"></script>
+<script type="text/javascript" src="vendor/angularjs/angular-route.js"></script>
+<script type="text/javascript" src="vendor/angularjs/angular-resource.js"></script>
+<script type="text/javascript" src="vendor/angular-strap/angular-strap.js"></script>
+<script type="text/javascript" src="vendor/angular-strap/angular-strap.tpl.min.js"></script>
+
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="home/home.js"></script>
+<script type="text/javascript" src="personnel/personnel.js"></script>
+<script type="text/javascript" src="peccancy/peccancy.js"></script>
+<script type="text/javascript" src="mobile/mobile.js"></script>
+<script type="text/javascript" src="tag/tag.js"></script>
+
+<!-- Mainly scripts --> 
+<script src="resources/inspinia/jquery-2.1.1.js"></script> 
+<script src="resources/inspinia/bootstrap.min.js"></script> 
+<script src="resources/inspinia/plugins/metisMenu/jquery.metisMenu.js"></script> 
+<script src="resources/inspinia/plugins/slimscroll/jquery.slimscroll.min.js"></script> 
+
+<!-- Flot --> 
+<script src="resources/inspinia/plugins/flot/jquery.flot.js"></script> 
+<script src="resources/inspinia/plugins/flot/jquery.flot.tooltip.min.js"></script> 
+<script src="resources/inspinia/plugins/flot/jquery.flot.spline.js"></script> 
+<script src="resources/inspinia/plugins/flot/jquery.flot.resize.js"></script> 
+<script src="resources/inspinia/plugins/flot/jquery.flot.pie.js"></script> 
+<script src="resources/inspinia/plugins/flot/jquery.flot.symbol.js"></script> 
+<script src="resources/inspinia/plugins/flot/curvedLines.js"></script> 
+
+<!-- Peity --> 
+<script src="resources/inspinia/plugins/peity/jquery.peity.min.js"></script> 
+<script src="resources/inspinia/demo/peity-demo.js"></script> 
+
+<!-- Custom and plugin javascript --> 
+<script src="resources/inspinia/inspinia.js"></script> 
+<script src="resources/inspinia/plugins/pace/pace.min.js"></script> 
+
+<!-- jQuery UI --> 
+<script src="resources/inspinia/plugins/jquery-ui/jquery-ui.min.js"></script> 
+
+<!-- Jvectormap --> 
+<script src="resources/inspinia/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script> 
+<script src="resources/inspinia/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> 
+
+<!-- Sparkline --> 
+<script src="resources/inspinia/plugins/sparkline/jquery.sparkline.min.js"></script> 
+
+<!-- Sparkline demo data  --> 
+<script src="resources/inspinia/demo/sparkline-demo.js"></script> 
+
+<!-- ChartJS--> 
+<script src="resources/inspinia/plugins/chartJs/Chart.min.js"></script> 
+<!-- Chosen --> 
+<script src="resources/inspinia/plugins/chosen/chosen.jquery.js"></script> 
+<script>
+        $(document).ready(function() {
+
+            var lineData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "Example dataset",
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [65, 59, 80, 81, 56, 55, 40]
+                    },
+                    {
+                        label: "Example dataset",
+                        fillColor: "rgba(26,179,148,0.5)",
+                        strokeColor: "rgba(26,179,148,0.7)",
+                        pointColor: "rgba(26,179,148,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(26,179,148,1)",
+                        data: [28, 48, 40, 19, 86, 27, 90]
+                    }
+                ]
+            };
+
+            var lineOptions = {
+                scaleShowGridLines: true,
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleGridLineWidth: 1,
+                bezierCurve: true,
+                bezierCurveTension: 0.4,
+                pointDot: true,
+                pointDotRadius: 4,
+                pointDotStrokeWidth: 1,
+                pointHitDetectionRadius: 20,
+                datasetStroke: true,
+                datasetStrokeWidth: 2,
+                datasetFill: true,
+                responsive: true,
+            };
+
+
+            var ctx = document.getElementById("lineChart").getContext("2d");
+            var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+
+        });
+    </script> 
+<!-- 页面设置 -->
+<div class="theme-config" style="display:none;">
+	<div class="theme-config-box">
+		<div class="spin-icon"> <i class="fa fa-cogs fa-spin"></i> </div>
+		<div class="skin-setttings">
+			<div class="title">Configuration</div>
+			<div class="setings-item"> <span> Collapse menu </span>
+				<div class="switch">
+					<div class="onoffswitch">
+						<input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="collapsemenu">
+						<label class="onoffswitch-label" for="collapsemenu"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+					</div>
+				</div>
+			</div>
+			<div class="setings-item"> <span> Fixed sidebar </span>
+				<div class="switch">
+					<div class="onoffswitch">
+						<input type="checkbox" name="fixedsidebar" class="onoffswitch-checkbox" id="fixedsidebar">
+						<label class="onoffswitch-label" for="fixedsidebar"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+					</div>
+				</div>
+			</div>
+			<div class="setings-item"> <span> Top navbar </span>
+				<div class="switch">
+					<div class="onoffswitch">
+						<input type="checkbox" name="fixednavbar" class="onoffswitch-checkbox" id="fixednavbar">
+						<label class="onoffswitch-label" for="fixednavbar"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+					</div>
+				</div>
+			</div>
+			<div class="setings-item"> <span> Boxed layout </span>
+				<div class="switch">
+					<div class="onoffswitch">
+						<input type="checkbox" name="boxedlayout" class="onoffswitch-checkbox" id="boxedlayout">
+						<label class="onoffswitch-label" for="boxedlayout"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+					</div>
+				</div>
+			</div>
+			<div class="setings-item"> <span> Fixed footer </span>
+				<div class="switch">
+					<div class="onoffswitch">
+						<input type="checkbox" name="fixedfooter" class="onoffswitch-checkbox" id="fixedfooter">
+						<label class="onoffswitch-label" for="fixedfooter"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label>
+					</div>
+				</div>
+			</div>
+			<div class="title">Skins</div>
+			<div class="setings-item default-skin"> <span class="skin-name "> <a href="#" class="s-skin-0"> Default </a> </span> </div>
+			<div class="setings-item blue-skin"> <span class="skin-name "> <a href="#" class="s-skin-1"> Blue light </a> </span> </div>
+			<div class="setings-item yellow-skin"> <span class="skin-name "> <a href="#" class="s-skin-3"> Yellow/Purple </a> </span> </div>
+		</div>
+	</div>
+</div>
+<script>
+    var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+                }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+    // Enable/disable fixed top navbar
+    $('#fixednavbar').click(function () {
+        if ($('#fixednavbar').is(':checked')) {
+            $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
+            $("body").removeClass('boxed-layout');
+            $("body").addClass('fixed-nav');
+            $('#boxedlayout').prop('checked', false);
+
+            if (localStorageSupport) {
+                localStorage.setItem("boxedlayout",'off');
+            }
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixednavbar",'on');
+            }
+        } else {
+            $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
+            $("body").removeClass('fixed-nav');
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixednavbar",'off');
+            }
+        }
+    });
+
+    // Enable/disable fixed sidebar
+    $('#fixedsidebar').click(function () {
+        if ($('#fixedsidebar').is(':checked')) {
+            $("body").addClass('fixed-sidebar');
+            $('.sidebar-collapse').slimScroll({
+                height: '100%',
+                railOpacity: 0.9
+            });
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixedsidebar",'on');
+            }
+        } else {
+            $('.sidebar-collapse').slimscroll({destroy: true});
+            $('.sidebar-collapse').attr('style', '');
+            $("body").removeClass('fixed-sidebar');
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixedsidebar",'off');
+            }
+        }
+    });
+
+    // Enable/disable collapse menu
+    $('#collapsemenu').click(function () {
+        if ($('#collapsemenu').is(':checked')) {
+            $("body").addClass('mini-navbar');
+            SmoothlyMenu();
+
+            if (localStorageSupport) {
+                localStorage.setItem("collapse_menu",'on');
+            }
+
+        } else {
+            $("body").removeClass('mini-navbar');
+            SmoothlyMenu();
+
+            if (localStorageSupport) {
+                localStorage.setItem("collapse_menu",'off');
+            }
+        }
+    });
+
+    // Enable/disable boxed layout
+    $('#boxedlayout').click(function () {
+        if ($('#boxedlayout').is(':checked')) {
+            $("body").addClass('boxed-layout');
+            $('#fixednavbar').prop('checked', false);
+            $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
+            $("body").removeClass('fixed-nav');
+            $(".footer").removeClass('fixed');
+            $('#fixedfooter').prop('checked', false);
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixednavbar",'off');
+            }
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixedfooter",'off');
+            }
+
+
+            if (localStorageSupport) {
+                localStorage.setItem("boxedlayout",'on');
+            }
+        } else {
+            $("body").removeClass('boxed-layout');
+
+            if (localStorageSupport) {
+                localStorage.setItem("boxedlayout",'off');
+            }
+        }
+    });
+
+    // Enable/disable fixed footer
+    $('#fixedfooter').click(function () {
+        if ($('#fixedfooter').is(':checked')) {
+            $('#boxedlayout').prop('checked', false);
+            $("body").removeClass('boxed-layout');
+            $(".footer").addClass('fixed');
+
+            if (localStorageSupport) {
+                localStorage.setItem("boxedlayout",'off');
+            }
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixedfooter",'on');
+            }
+        } else {
+            $(".footer").removeClass('fixed');
+
+            if (localStorageSupport) {
+                localStorage.setItem("fixedfooter",'off');
+            }
+        }
+    });
+
+    // SKIN Select
+    $('.spin-icon').click(function () {
+        $(".theme-config-box").toggleClass("show");
+    });
+
+    // Default skin
+    $('.s-skin-0').click(function () {
+        $("body").removeClass("skin-1");
+        $("body").removeClass("skin-2");
+        $("body").removeClass("skin-3");
+    });
+
+    // Blue skin
+    $('.s-skin-1').click(function () {
+        $("body").removeClass("skin-2");
+        $("body").removeClass("skin-3");
+        $("body").addClass("skin-1");
+    });
+
+    // resources/inspinia ultra skin
+    $('.s-skin-2').click(function () {
+        $("body").removeClass("skin-1");
+        $("body").removeClass("skin-3");
+        $("body").addClass("skin-2");
+    });
+
+    // Yellow skin
+    $('.s-skin-3').click(function () {
+        $("body").removeClass("skin-1");
+        $("body").removeClass("skin-2");
+        $("body").addClass("skin-3");
+    });
+
+    if (localStorageSupport) {
+        var collapse = localStorage.getItem("collapse_menu");
+        var fixedsidebar = localStorage.getItem("fixedsidebar");
+        var fixednavbar = localStorage.getItem("fixednavbar");
+        var boxedlayout = localStorage.getItem("boxedlayout");
+        var fixedfooter = localStorage.getItem("fixedfooter");
+
+        if (collapse == 'on') {
+            $('#collapsemenu').prop('checked','checked')
+        }
+        if (fixedsidebar == 'on') {
+            $('#fixedsidebar').prop('checked','checked')
+        }
+        if (fixednavbar == 'on') {
+            $('#fixednavbar').prop('checked','checked')
+        }
+        if (boxedlayout == 'on') {
+            $('#boxedlayout').prop('checked','checked')
+        }
+        if (fixedfooter == 'on') {
+            $('#fixedfooter').prop('checked','checked')
+        }
+    }
+	 
+</script>
+</body>
+</html>

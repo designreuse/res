@@ -1,0 +1,12 @@
+ {"icos":[ 
+{ "ico": "fa fa-bar-chart-o", "name":"统计分析"}, 
+{ "ico": "fa fa-edit", "name":"活动日志"}, 
+{ "ico": "fa  fa-cogs", "name":"系统管理"},
+{ "ico": "fa fa-tags", "name":"标签库"},
+{ "ico": "fa fa-exchange", "name":"进出站"},
+{ "ico": "fa fa-camera", "name":"违章记录"},
+{ "ico": "fa fa-photo", "name":"平面布置图"},
+{ "ico": "fa fa-align-justify", "name":"工程概况"},
+{ "ico": "fa fa-sitemap", "name":"组织机构"},
+{ "ico": "fa fa-th", "name":"工程管理"}
+]}

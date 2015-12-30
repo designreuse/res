@@ -1,0 +1,58 @@
+body {
+	font-family: Microsoft YaHei;
+}
+
+a:focus {
+outline: none;
+}
+
+.logo_img_login {
+	background: url(source/images/logo.png) no-repeat;
+	width: 83px;
+	height: 83px;
+	margin: 20px auto 0 auto;
+}
+.logo_title_login {
+	line-height: 24px;
+	color: #333;
+	font-size: 18px;
+	padding: 0px 0 10px 0;
+}
+.login_footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	padding: 10px 20px;
+	border-top: 1px solid #e7eaec;
+	background: #222;
+	text-align: center;
+	color: #999;
+}
+.logo_img {
+	margin: 5px 0 0 10px;
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+.logo_title {
+	font-size: 20px;
+	float: left;
+	margin: 16px 0 0 10px;
+	color: #333;
+	font-weight: 800;
+}
+.navbar-top-links li:last-child {
+	margin-right: 10px;
+}
+.fixed-nav .minimalize-styl-2 {
+	margin-right: 22px;
+}
+.select_item {
+	margin: 13px 0 0 20px;
+	float: left;
+}
+.pagination {
+	margin: 0;
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+
+<script	src="source/js/inspinia/jquery-2.1.1.js"></script>
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ek37Ouoi8mI6NIMStFsisayR"></script>
+<!--加载鼠标绘制工具-->
+<script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+<link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+<style type="text/css">
+body,#allmap {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+#red {
+	float: left;
+	clear: left;
+	height: 160px;
+	margin-left: 10px;
+	width: 5px;
+	background: #0C88E8;
+	margin-top: 8px;
+	cursor: pointer;
+}
+
+#red .ui-slider-range {
+	background: #fff;
+}
+
+#red .ui-slider-handle {
+	border-color: #F52E2E;
+	width: 13px;
+}
+</style>
+<script type="text/javascript">
+	var map;
+
+	var lt = new BMap.Point(107.101816,29.156116);
+    var rt = new BMap.Point(107.110153,29.156116);
+    var lb = new BMap.Point(107.101816,29.151763);
+    var rb = new BMap.Point(107.110153,29.151763);
+    
+    
+	
+	// 高度，宽度
+	var h,w;
+	
+	// x轴距离，像素	
+	var x_distance, y_distance;
+	var x_pixels, y_pixels;
+	
+	var styleOptions = {
+        strokeColor:"red",     //边线颜色。
+        fillColor:"red",       //填充颜色。当参数为空时，圆形将没有填充效果。
+        strokeWeight: 3,       //边线的宽度，以像素为单位。
+        strokeOpacity: 0.8,	   //边线透明度，取值范围0 - 1。
+        fillOpacity: 0.6,      //填充的透明度，取值范围0 - 1。
+        strokeStyle: 'solid'   //边线的样式，solid或dashed。
+    }
+    
+	$(function() {
+		initMap();
+		
+		//
+		// 计算高度、宽度
+		x_distance = map.getDistance(lt,rt).toFixed(2);
+		y_distance = map.getDistance(lt,lb).toFixed(2);
+		
+		x_pixels   = 931;
+		y_pixels   = 555;
+		
+		alert("地图宽度：" + x_distance + ", 地图高度：" + y_distance);
+		
+		// 单击
+		map.addEventListener("click",function(e) {
+			//alert(e.point.lng + "," + e.point.lat);
+			// 判断点的偏移量
+			var pOffset = {left: 0, top: 0};
+			pOffset.left  = e.point.lng < lt.lng ? -1 : (e.point.lng > rt.lng ? 1 : 0);
+			pOffset.top   = e.point.lat > lt.lat ? -1 : (e.point.lat < lb.lat ? 1 : 0);
+			
+			//alert(pOffset.left + ", " + pOffset.top);
+			
+			// 计算p1距离 左上角和右上角的距离
+			var p1 = new BMap.Point(e.point.lng, lt.lat); 	
+			var pw = parseFloat(map.getDistance(p1,lt).toFixed(2),10);
+			var px = (pw/x_distance * x_pixels).toFixed(0);
+			//alert("距离左上角：" + pw + "像素：" + px );
+			
+			// 计算p2距离 左上角和左下角的距离
+			var p2 = new BMap.Point(lt.lng, e.point.lat); 	
+			var ph = parseFloat(map.getDistance(p2,lt).toFixed(2),10);
+			var py = (ph/y_distance * y_pixels).toFixed(0);
+			//alert("距离左上角：" + ph + "像素：" + py);
+			
+			alert("x: " +px+ ", y:"+py);
+			if ( (pOffset.left + pOffset.top) == 0 ) {
+				//alert("在范围内！");
+			} else {
+				//alert("不在范围内！");
+			}
+			
+		});
+		
+		
+		// 绘制矩形
+		//bds的四个脚点坐标
+		var pts = [];
+	    pts.push(lt);
+	    pts.push(rt);
+	    pts.push(rb);
+	    pts.push(lb);
+	    var rect = new BMap.Polygon(pts);
+	    map.addOverlay(rect);//添加测试矩形  
+		
+		 //实例化鼠标绘制工具
+	    var drawingManager = new BMapLib.DrawingManager(map, {
+	        isOpen: false, //是否开启绘制模式
+	        enableDrawingTool: true, //是否显示工具栏
+	        drawingToolOptions: {
+	            anchor: BMAP_ANCHOR_TOP_RIGHT, //位置
+	            offset: new BMap.Size(5, 5), //偏离值
+	        },
+	        circleOptions: styleOptions, //圆的样式
+	        polylineOptions: styleOptions, //线的样式
+	        polygonOptions: styleOptions, //多边形的样式
+	        rectangleOptions: styleOptions //矩形的样式
+	    });  
+		 //添加鼠标绘制工具监听事件，用于获取绘制结果
+	    drawingManager.addEventListener('overlaycomplete', overlaycomplete);
+	});
+
+	//function overlaycomplete(e) {
+	//	alert(e.drawingMode);
+    //	alert(e.overlay);
+    //	alert(e.calculate);
+    //	alert(e.label);
+	//}
+	
+	function initMap() {
+
+		// 初始化地图
+		map = new BMap.Map("allmap",{minZoom:13,maxZoom:18});    // 创建Map实例
+		map.centerAndZoom(new BMap.Point(107.105706,29.153943), 18);  // 初始化地图,设置中心点坐标和地图级别
+		//map.centerAndZoom(new BMap.Point(116.610551, 39.894716), 16);  // 初始化地图,设置中心点坐标和地图级别
+		map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+		map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+		//添加比例尺
+		var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+		var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+		var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+		map.addControl(top_left_control);        
+		map.addControl(top_left_navigation);     
+	}
+	
+	/**画用户轨迹*/
+	function drow_user_point(_data) {
+		initMap();
+		if(_data.length>0){
+			var jd = _data[0].GPS_LONGITUDE.split(",");
+			var wd = _data[0].GPS_LATITUDE.split(",");
+			var active = _data[0].ACT.split(",");
+			var targetId = _data[0].TID.split(",");
+			var userId = _data[0].USERID.split(",");
+			var real_name = _data[0].REAL_NAME;
+			var PointArray = [] ; 
+			var WzArray=[];
+			for ( var i = 0; i < jd.length; i++) {
+				 var point = new BMap.Point(jd[i],wd[i]) ; 
+				 PointArray.push(point);
+				 if (active[i] != null && active[i] != ''&& active[i].indexOf('违章') != -1) {
+					 addWzMarker(new BMap.Point(jd[i], wd[i]), targetId[i], userId[i],real_name);
+					}
+			 }
+			var polyline = new BMap.Polyline( //添加折线
+					 PointArray,{strokeColor:"#006600", strokeWeight:2, strokeOpacity:1}    
+			       );    
+			 map.addOverlay(polyline);
+			//添加起始点标记
+			 var firstIcon = new BMap.Icon("http://js.webapi.amap.com/theme/v1.3/markers/n/start.png", new BMap.Size(32, 32), {    //小车图片
+					imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+				 });
+			var firstMarker = new BMap.Marker(new BMap.Point(jd[0],wd[0]),{icon:firstIcon});
+			map.addOverlay(firstMarker);
+			
+			 var endIcon = new BMap.Icon("http://js.webapi.amap.com/theme/v1.3/markers/n/end.png", new BMap.Size(32, 32), {    //小车图片
+					imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+				 });
+			var endMarker = new BMap.Marker(new BMap.Point(jd[jd.length-1],wd[wd.length-1]),{icon:endIcon});
+			map.addOverlay(endMarker);
+		}
+	}
+	
+	function addWzMarker(pot, tid, userId, real_name){
+		//添加违章点标记
+		var wzIcon = new BMap.Icon("http://webapi.amap.com/images/marker_sprite.png", new BMap.Size(32, 32), {    //小车图片
+			imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+		 });
+		var wzMarker = new BMap.Marker(pot,{icon:wzIcon});
+		wzMarker.addEventListener("click", function(event){
+			// 百度地图API功能
+			var sContent = '<iframe  src="/pmbztPage/showUserWzDateil.jsp?tid='
+				+ tid
+				+ '&userId='
+				+ userId
+				+ '&lng='
+				+ pot.lng
+				+ '&lat='
+				+ pot.lat
+				+ '"  frameborder="0" scrolling="no"  width="600" height="400"></iframe>'
+			var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+			this.openInfoWindow(infoWindow);
+		});
+		map.addOverlay(wzMarker);
+	}
+</script>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>

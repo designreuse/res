@@ -1,0 +1,78 @@
+/* ------------------- 表单样式(用法<table class="FormtableCon"></table>)  ---------------------------------------------------------------------------- */
+.Formtable {width:98%;margin:0px;background:#fff;border:1px solid #E7EAEC;}
+
+.Formtabletitle {padding:5px 0;margin:0;background:#999D9F;}
+.Formtabletitle span {background:url(../image/lims_point_icon1.png) no-repeat 8px 4px;padding-left:22px;color:#fff;font-size:12px;font-weight:bold;}
+.FormtableCon {width:99%;font-size:12px;border-collapse:collapse;}
+.FormtableCon th {text-align:center;vertical-align:middle;font-weight:bold;padding:0 5px;height:16px;line-height:16px;background:#E5E5E5}
+.FormtableCon td {text-align:left;vertical-align:middle;padding:5px;}
+.FormtableCon td.c {text-align:center;}
+.FormtableCon td.l {text-align:left;}
+.FormtableCon td.r {text-align:right;}
+.FormtableCon .color{background:#F7F7F7;}
+/* .FormtableCon  tr:HOVER td {background:#EAF7FF;} */
+
+.FormtableCon_c {width:100%;font-size:12px;border-collapse:collapse;border: 1px solid #ccc;}
+.FormtableCon_c th {text-align:center;color:#333;vertical-align:middle;font-weight:bold;padding:0 5px;height:16px;line-height:24px;background:#fff;border-bottom:1px dashed #D0DDE5;}
+.FormtableCon_c td {text-align:left;vertical-align:middle;padding:5px;height:14px;background:#fff;border-bottom:1px dashed #D0DDE5;}
+.FormtableCon_c td.white {background:#fff;}
+.FormtableCon_c .color td {background:#fff;border-bottom:1px dashed #D0DDE5;}
+.FormtableCon_c .css_style_class td {background:#fff;border-bottom:1px dashed #D0DDE5;}
+.FormtableCon_c td.c {text-align:center;}
+.FormtableCon_c td.l {text-align:left;}
+.FormtableCon_c td.r {text-align:right;}
+
+
+.FormtableCon input {border:1px solid #aaa;vertical-align:middle;height:22px;line-height:22px;padding-left:2px;}
+.FormtableCon select {border:1px solid #aaa;vertical-align:middle;height:22px;line-height:22px;}
+.FormtableCon textarea {font-size:12px;padding:2px;}
+.FormtableCon .td_textarealabel {vertical-align:top;}
+
+/*========================================================TAB页===========================================================================*/
+.TabTable {position:relative;background:#fff;;}
+.TabTable .TabTableNAV {position:absolute;top:0px;left:20px;height:30px;display:block;}
+.TabTable .TabTableNAV ul {}
+.TabTable .TabTableNAV ul li {display:block;float:left;margin-right:10px;height:30px;}
+.TabTable .TabTableNAV ul li a {float:left;color:#333;font-weight:normal;border:1px solid #DEDEDE;border-bottom:0;height:29px;line-height:29px;display:block;padding-left:10px;background:#F7F7F7}
+.TabTable .TabTableNAV ul li a:hover {color:#f60;}
+.TabTable .TabTableNAV ul li a span {float:left;cursor:pointer;padding-right:10px;background:#F7F7F7;}
+.TabTable .TabTableNAV ul li.currenttab {border: 1px solid #0D83C6;}
+.TabTable .TabTableNAV ul li.currenttab a {color:#333;height:30px;line-height:30px;background:#EDFAFF;border:1px solid #EDFAFF;border-bottom:0;}
+.TabTable .TabTableNAV ul li.currenttab a:hover {color:#333;}
+.TabTable .TabTableNAV ul li.currenttab a span {background:#EDFAFF;font-weight:bold;}
+
+.TabTable .TabTableBOX01 {display:none;_height:220px;min-height:220px;background:#EDFAFF;border:1px solid #0D83C6;margin-bottom:10px;;padding:10px 10px 0 10px}
+.TabTable .TabTableBOX01.b {display:block;_height:450px;min-height:450px;;background:#EDFAFF;border:1px solid #0D83C6;margin-bottom:10px;;padding:10px 10px 0 10px}
+
+.TabTable .TabTableBOX02 {display:none;_height:220px;min-height:220px;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+.TabTable .TabTableBOX02.b {display:block;_height:450px;min-height:450px;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+
+.TabTable .TabTableBOX03 {display:none;_height:220px;min-height:220px;width:95%;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+.TabTable .TabTableBOX03.b {display:block;_height:220px;min-height:220px;width:95%;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+
+.TabTable .TabTableBOX04 {display:none;_height:220px;min-height:220px;width:95%;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+.TabTable .TabTableBOX04.b {display:block;_height:220px;min-height:220px;width:95%;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+
+
+.TabTable .TabTableBOX05 {display:none;_height:220px;min-height:220px;width:95%;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+.TabTable .TabTableBOX05.b {display:block;_height:220px;min-height:220px;width:95%;background:#ECFCFF;border:1px solid #499EB3;margin-left:10px;margin-bottom:10px;;padding:10px 10px 0 10px}
+
+.TabTable .myworkingboxttable {margin:0;width:100%;}
+
+/*=============================================================标签栏======================================================================*/
+.myworkingbox {width:100%;background:#fff;padding-bottom:10px;margin-bottom:8px;position:relative;}
+ .myworkingbox .myworkingboxttitle {position:relative;height:28px;line-height28px;padding-top:2px;padding-left:10px;background:url(../image/lims_title_bg.png) repeat-x left top;margin-bottom:0;}
+ .myworkingbox .myworkingboxttitle a {font-weight:bold;height:21px;line-height:21px;color:#333;padding:2px 4px;*padding:4px 4px 1px 5px;margin-right:5px;border:1px solid #ccc;background:#f5f5f5;}
+ .myworkingbox .myworkingboxttitle a:hover {background:#2D59A2;color:#fff;font-weight:bold;border:1px solid #001F55;} 
+ .myworkingbox .myworkingboxttitle a.current {background:#17B007;color:#fff;font-weight:bold;border:1px solid #065C02;} 
+ .myworkingbox .myworkingboxttitle div {position:absolute;line-height:28px;;left:10px;top:0px;color:#333;font-weight:bold;font-size:12px;width:95%;padding-left:15px;background:url(../image/title_icon.png) no-repeat left 8px;}
+ .myworkingbox .myworkingboxttitle div  span{font-weight:normal;}
+
+
+
+/*=====================================================查询或者保存模块===========================================================================*/
+.FUNCIONBARNEW {font-size:12px;color:#333;}
+.FUNCIONBARNEW  a:HOVER{font-size:12px;color:#fff;}
+.FUNCIONBARNEW label {font-size:12px;color:#444;height:24px;line-height:24px;vertical-align:center;}
+.FUNCIONBARNEW select {font-size:12px;color:#444;height:21px;line-height:21px;vertical-align:center;margin:0 5px;border:1px solid #AABBCC;}
+.FUNCIONBARNEW input  {font-size:12px;color:#444;height:20px;line-height:20px;vertical-align:center;margin:0 5px;border:1px solid #AABBCC;padding-left:2px;}
